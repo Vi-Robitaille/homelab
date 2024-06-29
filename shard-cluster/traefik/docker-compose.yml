@@ -39,7 +39,6 @@ services:
       - "--certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
-      - "/mnt/shard/traefik/$HOSTNAME/le/:/letsencrypt"
       - "/mnt/shard/homelab/shard-cluster/traefik/rules.yml:/etc/traefik/rules.yml"
     ports:
       - "80:80"
