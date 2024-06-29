@@ -22,21 +22,21 @@ http:
         - websecure
       service: emby
       rule: Host(`emby.retard.space`)
-      <<: *letls
+      <<: *x-tls
 
     unifi:
       entryPoints:
         - websecure
       service: unifi
       rule: Host(`unifi.retard.space`)
-      <<: *letls
+      <<: *x-tls
 
     radarr:
       entryPoints:
         - websecure
       service: radarr
       rule: Host(`radarr.retard.space`)
-      <<: *letls
+      <<: *x-tls
 
   services:
     emby:
