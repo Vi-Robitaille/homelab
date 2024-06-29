@@ -14,10 +14,12 @@ pve2            A   10.0.0.3
 truenas	    	A	10.0.0.7
 
 fileserver		A	10.0.0.240
+shard-vrrp      A   10.0.0.200 
 shard1			A	10.0.0.201
 shard2			A	10.0.0.202
 shard3			A	10.0.0.203
 shard4			A	10.0.0.204
 
-emby			CNAME	truenas
-unifi			CNAME	truenas
+emby			CNAME	shard-vrrp
+unifi			CNAME	shard-vrrp
+flame			CNAME	shard-vrrp

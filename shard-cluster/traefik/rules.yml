@@ -1,0 +1,56 @@
+---
+
+# TODO: Can we template the tls sections?
+
+x-tls: &x-tls
+  tls: 
+    certResolver: "letsencrypt"
+    domains:
+      - main: '`retard.space`'
+        sans:
+          - '*.`retard.space`'
+
+http:
+  routers:
+    api:
+      rule: Host(`traefik.retard.space`)
+      service: "api@internal"
+      # middlewares:
+      #   - api-ipallowlist
+    emby:
+      entryPoints:
+        - websecure
+      service: emby
+      rule: Host(`emby.retard.space`)
+      <<: *letls
+
+    unifi:
+      entryPoints:
+        - websecure
+      service: unifi
+      rule: Host(`unifi.retard.space`)
+      <<: *letls
+
+    radarr:
+      entryPoints:
+        - websecure
+      service: radarr
+      rule: Host(`radarr.retard.space`)
+      <<: *letls
+
+  services:
+    emby:
+      loadBalancer:
+        servers:
+          - url: "http://truenas:9096/web"
+        passHostHeader: true
+    unifi:
+      loadBalancer:
+        servers:
+          - url: "http://truenas:30072"
+        passHostHeader: true
+    radarr:
+      loadBalancer:
+        servers:
+          - url: "http://10.0.0.7:30025"
+        passHostHeader: true
