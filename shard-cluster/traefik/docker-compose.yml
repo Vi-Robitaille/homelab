@@ -3,6 +3,7 @@ version: '3.9'
 services:
   traefik:
     image: traefik
+    dns: 10.0.0.200
     secrets:
       - cf_dns_api_token
     environment:
