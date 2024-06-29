@@ -1,0 +1,11 @@
+retard.space:53 {
+    file db.retard.space
+    # log
+}
+
+.:53 {
+    whoami
+    health
+    forward . 10.0.0.4
+    # log
+}

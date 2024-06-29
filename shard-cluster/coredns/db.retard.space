@@ -1,0 +1,23 @@
+$ORIGIN .
+$TTL 86400	; 1 day
+retard.space		IN SOA	dns.retard.space. admin.avidtwo.com. (
+				2022145260 ; serial
+				3600       ; refresh (1 hour)
+				1800       ; retry (30 minutes)
+				604800     ; expire (1 week)
+				86400      ; minimum (1 day)
+				)
+			NS	dns.retard.space.
+$ORIGIN retard.space.
+pve             A   10.0.0.2
+pve2            A   10.0.0.3
+truenas	    	A	10.0.0.7
+
+fileserver		A	10.0.0.240
+shard1			A	10.0.0.201
+shard2			A	10.0.0.202
+shard3			A	10.0.0.203
+shard4			A	10.0.0.204
+
+emby			CNAME	truenas
+unifi			CNAME	truenas
